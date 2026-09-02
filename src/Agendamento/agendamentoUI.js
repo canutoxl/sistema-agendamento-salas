@@ -1,5 +1,6 @@
 import * as data from "./dados.js";
 var agendamentos = data.agendamentosIniciais;
+const avisoVazio = document.querySelector("#agentamentos-vazios");
 
 const renderAgendamentos = () => {
     const containerAgendamentosEl = document.querySelector(".container-agendamentos");
@@ -49,11 +50,26 @@ const renderAgendamentos = () => {
     });
 
     if(agendamentos.length === 0){
-        const avisoVazio = document.querySelector("#agentamentos-vazios");
         avisoVazio.classList.add("visible");
     }else{
         avisoVazio.classList.remove("visible");
     }
 }
 
-export {renderAgendamentos};
+const renderSelectForm = () => {
+    const selectBlocoForm = document.querySelector("#blocoForm");
+    const selectSalaForm = document.querySelector("#salaForm");
+
+    data.infraestrutura.map((item) => {
+        const option = document.createElement("option");
+        option.value = item.bloco;
+        option.textContent = item.bloco;
+        selectBlocoForm.appendChild(option);
+    });
+
+    selectBlocoForm.addEventListener('change', (e) => {
+        const value = e.target.value;
+    });
+}
+
+export {renderAgendamentos, renderSelectForm};
