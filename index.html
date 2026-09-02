@@ -7,56 +7,124 @@
     <title>Agendamento de Salas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        *{
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
 
-        html{
+        html {
             font-size: 16px;
         }
 
-        html, body{
+        html,
+        body {
             width: 100%;
             height: 100%;
             max-width: 100vw;
             max-height: 100vh;
         }
 
-        .app{
+        .app {
             width: 100%;
             height: 100%;
             padding: 2rem;
         }
 
-        .container{
+        .container {
             max-width: 100%;
         }
 
-        .container-agendamentos .row .col{
+        .container-titles .row,
+        .container-agendamentos .row {
+            padding: 2px;
+        }
+
+        .container-titles .row .col,
+        .container-agendamentos .row .col {
             border: 1px solid #101010;
+            padding: 5px;
+        }
+
+        .container-agendamentos .row .col svg {
+            cursor: pointer;
+            transition: 300ms;
+        }
+
+        .container-agendamentos .row .col svg:hover {
+            stroke: #101010;
+        }
+
+        #agentamentos-vazios {
+            display: none;
+        }
+
+        #agentamentos-vazios.visible {
+            display: block;
         }
     </style>
 </head>
 
 <body>
     <div class="app">
-        <div class="container text-center container-agendamentos">
-            <h1 class="text-center">Agendamentos</h1>
+        <div class="container">
             <div class="row">
-                <div class="col">ID</div>
-                <div class="col">Solicitante</div>
-                <div class="col">Bloco</div>
-                <div class="col">Sala</div>
-                <div class="col">Data</div>
-                <div class="col">Turno</div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary d-flex align-items-center" style="gap: 5px"
+                        data-bs-toggle="modal" data-bs-target="#modalNovoAgendamento">
+                        Novo Agendamento
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-plus-icon lucide-circle-plus">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 12h8" />
+                            <path d="M12 8v8" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
+        <h1 class="text-center">Agendamentos</h1>
+        <div class="agendamentos-wrapper">
+            <div class="alert alert-danger" id="agentamentos-vazios">
+                <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
+            </div>
+            <div class="container container-titles">
+                <div class="row ">
+                    <div class="col fw-bold">ID</div>
+                    <div class="col fw-bold">Solicitante</div>
+                    <div class="col fw-bold">Bloco</div>
+                    <div class="col fw-bold">Sala</div>
+                    <div class="col fw-bold">Data</div>
+                    <div class="col fw-bold">Turno</div>
+                    <div class="col fw-bold">Excluir</div>
+                </div>
+            </div>
+            <div class="container text-center container-agendamentos">
+            </div>
+        </div>
+
     </div>
+    <div class="modal fade" id="modalNovoAgendamento" tabindex="-1" aria-labelledby="modalNovoAgendamentoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalNovoAgendamentoLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
