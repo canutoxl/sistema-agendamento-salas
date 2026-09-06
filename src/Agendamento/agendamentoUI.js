@@ -25,6 +25,14 @@ const renderAgendamentos = () => {
         turnoEl.classList.add("col");
         deleteEl.classList.add("col");
 
+        idEl.classList.add("text-start");
+        solicitanteEl.classList.add("text-start");
+        blocoEl.classList.add("text-start");
+        salaEl.classList.add("text-start");
+        dataEl.classList.add("text-start");
+        turnoEl.classList.add("text-start");
+        deleteEl.classList.add("text-start");
+
         idEl.textContent = item.id;
         solicitanteEl.textContent = item.solicitante;
         blocoEl.textContent = item.bloco;
