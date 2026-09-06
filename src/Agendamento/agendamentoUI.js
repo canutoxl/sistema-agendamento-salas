@@ -49,9 +49,9 @@ const renderAgendamentos = () => {
         containerAgendamentosEl.appendChild(rowEl);
     });
 
-    if(agendamentos.length === 0){
+    if (agendamentos.length === 0) {
         avisoVazio.classList.add("visible");
-    }else{
+    } else {
         avisoVazio.classList.remove("visible");
     }
 }
@@ -67,9 +67,23 @@ const renderSelectForm = () => {
         selectBlocoForm.appendChild(option);
     });
 
+    data.infraestrutura[0].salas.map((sala) => {
+        const option = document.createElement("option");
+        option.value = sala;
+        option.textContent = sala;
+        selectSalaForm.appendChild(option);
+    });
+
     selectBlocoForm.addEventListener('change', (e) => {
         const value = e.target.value;
+        selectSalaForm.innerHTML = "";
+        data.infraestrutura.find((item) => item.bloco === value).salas.map((sala) => {
+            const option = document.createElement("option");
+            option.value = sala;
+            option.textContent = sala;
+            selectSalaForm.appendChild(option);
+        });
     });
 }
 
-export {renderAgendamentos, renderSelectForm};
+export { renderAgendamentos, renderSelectForm };

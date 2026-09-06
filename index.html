@@ -9,10 +9,32 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+        :root {
+            --bg: #F8FAFC;
+            --white: #FFFFFF;
+            --text: #243447;
+            --text-secondary: #64748B;
+            --horas: #7FB3D5;
+            --reserva: #82C7A5;
+            --manha: #E8C968;
+            --tarde: #E9A88F;
+            --noite: #AFA0D5;
+
+            --header: #DCE6F2;
+
+            --btn-primary: #6F91B5;
+            --btn-primary-hover: #5F82A8;
+            --btn-secondary: #E8EEF5;
+            --btn-secondary-hover: #DCE5EF;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: "Plus Jakarta Sans", sans-serif;
             overflow: hidden;
         }
 
@@ -25,17 +47,23 @@
             width: 100%;
             height: 100%;
             max-width: 100vw;
-            max-height: 100vh;
+            background-color: var(--bg);
+            overflow-y: auto;
         }
+
+        h1,
+        h2,
+        h3,
+        p,
+        span,
+        label {
+            color: var(--text);
+        }
+
 
         .app {
             width: 100%;
             height: 100%;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 100%;
         }
 
         .container-titles .row,
@@ -65,30 +93,325 @@
         #agentamentos-vazios.visible {
             display: block;
         }
+
+        .card-horas {
+            border: 1px solid var(--horas);
+            box-shadow: 4px 4px 1px var(--horas);
+        }
+
+        .card-horas .card-header {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--horas);
+            border-bottom: 1px solid var(--horas)
+        }
+
+        .card-horas .card-body {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--horas);
+        }
+
+        .card-horas .card-body .card-valor-horas {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--horas);
+        }
+
+        .card-reserva {
+            border: 1px solid var(--reserva);
+            box-shadow: 4px 4px 1px var(--reserva);
+        }
+
+        .card-reserva .card-header {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--reserva);
+            border-bottom: 1px solid var(--reserva)
+        }
+
+        .card-reserva .card-body {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--reserva);
+        }
+
+        .card-reserva .card-body .card-valor-reserva {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--reserva);
+        }
+
+        .card-manha {
+            border: 1px solid var(--manha);
+            box-shadow: 4px 4px 1px var(--manha);
+        }
+
+        .card-manha .card-header {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--manha);
+            border-bottom: 1px solid var(--manha)
+        }
+
+        .card-manha .card-body {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--manha);
+        }
+
+        .card-manha .card-body .card-valor-manha {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--manha);
+        }
+
+        .card-tarde {
+            border: 1px solid var(--tarde);
+            box-shadow: 4px 4px 1px var(--tarde);
+        }
+
+        .card-tarde .card-header {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--tarde);
+            border-bottom: 1px solid var(--tarde)
+        }
+
+        .card-tarde .card-body {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--tarde);
+        }
+
+        .card-tarde .card-body .card-valor-tarde {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--tarde);
+        }
+
+        .card-noite {
+            border: 1px solid var(--noite);
+            box-shadow: 4px 4px 1px var(--noite);
+        }
+
+        .card-noite .card-header {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--noite);
+            border-bottom: 1px solid var(--noite)
+        }
+
+        .card-noite .card-body {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--noite);
+        }
+
+        .card-noite .card-body .card-valor-noite {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--noite);
+        }
+
+        .navbar {
+            background: var(--header);
+        }
+
+        .btn-default {
+            background-color: var(--btn-primary);
+            border: 1px solid var(--btn-primary);
+            color: var(--white);
+        }
+
+        .btn-default:hover {
+            border: 1px solid var(--btn-primary);
+            color: var(--white);
+            background-color: var(--btn-primary-hover);
+        }
+
+        @keyframes animacaoContainer {
+            from {
+                margin-left: -100%;
+            }
+
+            to {
+                margin-left: 0%;
+            }
+        }
+
+        .container {
+            animation: animacaoContainer ease-in-out 2s;
+        }
     </style>
 </head>
 
 <body>
     <div class="app">
+        <nav class="navbar navbar-expand-lg pb-3 pt-3 mb-5">
+            <div class="container">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <button type="button" class="btn btn-default d-flex align-items-center" style="gap: 5px"
+                    data-bs-toggle="modal" data-bs-target="#modalNovoAgendamento">
+                    Novo Agendamento
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-circle-plus-icon lucide-circle-plus">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12h8" />
+                        <path d="M12 8v8" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
         <div class="container">
             <div class="row">
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary d-flex align-items-center" style="gap: 5px"
-                        data-bs-toggle="modal" data-bs-target="#modalNovoAgendamento">
-                        Novo Agendamento
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-plus-icon lucide-circle-plus">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M8 12h8" />
-                            <path d="M12 8v8" />
-                        </svg>
-                    </button>
+                <div class="col">
+                    <div class="card  mb-3 card-horas">
+                        <div class="card-header">
+                            total de horas
+                            agendadas no dia</div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-start">
+                                    <div class="rounded bg-white"
+                                        style="width: fit-content; padding: 1rem; border: 1px solid var(--horas);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                                            viewBox="0 0 24 24" fill="none" stroke="var(--horas)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-clipboard-clock-icon lucide-clipboard-clock">
+                                            <path d="M16 14v2.2l1.6 1" />
+                                            <path d="M16 4h2a2 2 0 0 1 2 2v.832" />
+                                            <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2" />
+                                            <circle cx="16" cy="16" r="6" />
+                                            <rect x="8" y="2" width="8" height="4" rx="1" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex justify-content-start align-items-center card-valor-horas">9999
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  mb-3 card-reserva">
+                        <div class="card-header" style="text-transform: uppercase; font-weight: 700;">total de reservas
+                            ativas</div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-start">
+                                    <div class="rounded bg-white"
+                                        style="width: fit-content; padding: 1rem; border: 1px solid var(--reserva);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                                            viewBox="0 0 24 24" fill="none" stroke="var(--reserva)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-clipboard-list-icon lucide-clipboard-list">
+                                            <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                                            <path
+                                                d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                                            <path d="M12 11h4" />
+                                            <path d="M12 16h4" />
+                                            <path d="M8 11h.01" />
+                                            <path d="M8 16h.01" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex justify-content-start align-items-center card-valor-reserva"
+                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  mb-3 card-manha">
+                        <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
+                            da Manhã</div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-start">
+                                    <div class="rounded bg-white"
+                                        style="width: fit-content; padding: 1rem; border: 1px solid var(--manha);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                                            viewBox="0 0 24 24" fill="none" stroke="var(--manha)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-alarm-clock-icon lucide-alarm-clock">
+                                            <circle cx="12" cy="13" r="8" />
+                                            <path d="M12 9v4l2 2" />
+                                            <path d="M5 3 2 6" />
+                                            <path d="m22 6-3-3" />
+                                            <path d="M6.38 18.7 4 21" />
+                                            <path d="M17.64 18.67 20 21" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex justify-content-start align-items-center card-valor-manha"
+                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  mb-3 card-tarde">
+                        <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
+                            da Tarde</div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-start">
+                                    <div class="rounded bg-white"
+                                        style="width: fit-content; padding: 1rem; border: 1px solid var(--tarde);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                                            viewBox="0 0 24 24" fill="none" stroke="var(--tarde)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-sun-icon lucide-sun">
+                                            <circle cx="12" cy="12" r="4" />
+                                            <path d="M12 2v2" />
+                                            <path d="M12 20v2" />
+                                            <path d="m4.93 4.93 1.41 1.41" />
+                                            <path d="m17.66 17.66 1.41 1.41" />
+                                            <path d="M2 12h2" />
+                                            <path d="M20 12h2" />
+                                            <path d="m6.34 17.66-1.41 1.41" />
+                                            <path d="m19.07 4.93-1.41 1.41" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex justify-content-start align-items-center card-valor-tarde"
+                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  mb-3 card-noite">
+                        <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
+                            da Noite</div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-start">
+                                    <div class="rounded bg-white"
+                                        style="width: fit-content; padding: 1rem; border: 1px solid var(--noite);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                                            viewBox="0 0 24 24" fill="none" stroke="var(--noite)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-moon-icon lucide-moon">
+                                            <path
+                                                d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex justify-content-start align-items-center card-valor-noite"
+                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <h1 class="text-center">Agendamentos</h1>
-        <div class="agendamentos-wrapper">
+        <div class="agendamentos-wrapper d-flex flex-column gap-2">
             <div class="alert alert-danger" id="agentamentos-vazios">
                 <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
             </div>
