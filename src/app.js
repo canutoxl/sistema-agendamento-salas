@@ -1,4 +1,7 @@
-import * as agendamentoUI from "./Agendamento/agendamentoUI.js";
+import * as agendamentoModule from "./Agendamento/agendamentoModule.js";
+import * as agendamentoService from "./Agendamento/agendamentoService.js";
 
-agendamentoUI.renderAgendamentos();
-agendamentoUI.renderSelectForm();
+agendamentoModule.renderAgendamentos();
+agendamentoModule.renderSelects();
+
+document.querySelector('#btnSalvarAgendamento').addEventListener('click', () => agendamentoModule.adicionarNovoAgendamento()); 

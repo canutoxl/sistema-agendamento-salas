@@ -1,11 +1,12 @@
-import * as data from "./dados.js";
-var agendamentos = data.agendamentosIniciais;
+import * as dados from "./dados.js";
+import * as agendamentoService from './agendamentoService.js';
+
 const avisoVazio = document.querySelector("#agentamentos-vazios");
 
-const renderAgendamentos = () => {
+const tabelaAgendamentos = () => {
     const containerAgendamentosEl = document.querySelector(".container-agendamentos");
     containerAgendamentosEl.innerHTML = "";
-    agendamentos.map((item) => {
+    agendamentoService.agendamentos.map((item) => {
         const rowEl = document.createElement("div");
         rowEl.classList.add("row");
         const idEl = document.createElement("div");
@@ -37,7 +38,7 @@ const renderAgendamentos = () => {
         solicitanteEl.textContent = item.solicitante;
         blocoEl.textContent = item.bloco;
         salaEl.textContent = item.sala;
-        dataEl.textContent = new Date(item.data).toLocaleDateString();
+        dataEl.textContent = item.data;
         turnoEl.textContent = item.turno;
         deleteEl.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#ff0000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-trash-icon lucide-trash'><path d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6'/><path d='M3 6h18'/><path d='M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/></svg>";
 
@@ -50,32 +51,32 @@ const renderAgendamentos = () => {
         rowEl.appendChild(deleteEl);
 
         deleteEl.addEventListener('click', () => {
-            agendamentos = agendamentos.filter((agendamentos) => agendamentos.id !== item.id);
-            renderAgendamentos();
+            agendamentoService.deleteAgentamento(item);
+            tabelaAgendamentos();
         });
 
         containerAgendamentosEl.appendChild(rowEl);
     });
 
-    if (agendamentos.length === 0) {
+    if (agendamentoService.agendamentos.length === 0) {
         avisoVazio.classList.add("visible");
     } else {
         avisoVazio.classList.remove("visible");
     }
 }
 
-const renderSelectForm = () => {
+const dadosSelectAgendamento = () => {
     const selectBlocoForm = document.querySelector("#blocoForm");
     const selectSalaForm = document.querySelector("#salaForm");
 
-    data.infraestrutura.map((item) => {
+    dados.infraestrutura.map((item) => {
         const option = document.createElement("option");
         option.value = item.bloco;
         option.textContent = item.bloco;
         selectBlocoForm.appendChild(option);
     });
 
-    data.infraestrutura[0].salas.map((sala) => {
+    dados.infraestrutura[0].salas.map((sala) => {
         const option = document.createElement("option");
         option.value = sala;
         option.textContent = sala;
@@ -85,7 +86,7 @@ const renderSelectForm = () => {
     selectBlocoForm.addEventListener('change', (e) => {
         const value = e.target.value;
         selectSalaForm.innerHTML = "";
-        data.infraestrutura.find((item) => item.bloco === value).salas.map((sala) => {
+        dados.infraestrutura.find((item) => item.bloco === value).salas.map((sala) => {
             const option = document.createElement("option");
             option.value = sala;
             option.textContent = sala;
@@ -94,4 +95,4 @@ const renderSelectForm = () => {
     });
 }
 
-export { renderAgendamentos, renderSelectForm };
+export { tabelaAgendamentos, dadosSelectAgendamento };
