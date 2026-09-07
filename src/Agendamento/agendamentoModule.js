@@ -1,0 +1,36 @@
+import * as agendamentoUI from './agendamentoUI.js';
+import * as agendamentoService from './agendamentoService.js';
+
+const renderAgendamentos = () => agendamentoUI.tabelaAgendamentos();
+const renderSelects = () => agendamentoUI.dadosSelectAgendamento();
+const renderFiltersSelects = () => agendamentoUI.filterSelectAgendamento();
+
+const renderMetricas = () => {
+    const metricaTotalReservas = document.querySelector('#metricaTotalReservas');
+    const metricaManhaReservas = document.querySelector('#metricaManhaReservas');
+    const metricaTardeReservas = document.querySelector('#metricaTardeReservas');
+    const metricaNoiteReservas = document.querySelector('#metricaNoiteReservas');
+
+    agendamentoService.calcularMetricas(metricaTotalReservas, metricaManhaReservas, metricaTardeReservas, metricaNoiteReservas);
+}
+
+const adicionarNovoAgendamento = () => {
+    const nome = document.querySelector('#nomeForm');
+    const bloco = document.querySelector('#blocoForm');
+    const sala = document.querySelector('#salaForm');
+    const data = document.querySelector('#dataForm');
+    const turno = document.querySelector('#turnoForm');
+
+    const avisoDadosVazios = document.querySelector('#form-dados-vazios-aviso');
+    const avisoDadosExistentes = document.querySelector('#form-dados-existentes-aviso');
+
+    const modalElement = document.getElementById('modalNovoAgendamento');
+
+    agendamentoService.novoAgendamento(nome, bloco, sala, data, turno, avisoDadosVazios, avisoDadosExistentes, modalElement);
+    renderAgendamentos();
+    renderMetricas();
+}
+
+
+
+export { renderAgendamentos, renderSelects, adicionarNovoAgendamento, renderMetricas, renderFiltersSelects }
