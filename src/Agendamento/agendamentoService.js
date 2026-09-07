@@ -50,7 +50,11 @@ const novoAgendamento = (nome, bloco, sala, data, turno, avisoDadosVazios, aviso
 }
 
 const filtrarAgendamentos = (nomeFilter = "", dataFilter = "", blocoFilter = "", salaFilter = "") => {
-
+    console.log(nomeFilter);
+    console.log(dataFilter);
+    console.log(blocoFilter);
+    console.log(salaFilter);
+    
     return agendamentos.filter(agendamento => (agendamento.solicitante.replace(/\s+/g, '').toLowerCase().includes(nomeFilter.replace(/\s+/g, '').toLowerCase())) && 
     (agendamento.data.replace(/\s+/g, '').toLowerCase().includes(dataFilter.replace(/\s+/g, '').toLowerCase())) &&
     (agendamento.bloco.replace(/\s+/g, '').toLowerCase().includes(blocoFilter.replace(/\s+/g, '').toLowerCase())) &&

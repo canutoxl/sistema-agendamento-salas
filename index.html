@@ -35,7 +35,7 @@
             margin: 0;
             padding: 0;
             font-family: "Plus Jakarta Sans", sans-serif;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         html {
@@ -86,6 +86,11 @@
         .container-agendamentos .row {
             padding: 2px;
             border-radius: 0.375rem;
+        }
+
+        .container-titles .row .col,
+        .container-agendamentos .row .col {
+            min-width: 133px;
         }
 
         .container-agendamentos .row:nth-child(even) {
@@ -318,7 +323,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="col">
+                <div class="col-12 col-sm-6 col-xl-3">
                     <div class="card  mb-3 card-reserva">
                         <div class="card-header" style="text-transform: uppercase; font-weight: 700;">total de reservas
                         </div>
@@ -347,7 +352,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-6 col-xl-3">
                     <div class="card  mb-3 card-manha">
                         <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
                             da Manhã</div>
@@ -375,7 +380,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-6 col-xl-3">
                     <div class="card  mb-3 card-tarde">
                         <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
                             da Tarde</div>
@@ -406,7 +411,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-6 col-xl-3">
                     <div class="card  mb-3 card-noite">
                         <div class="card-header" style="text-transform: uppercase; font-weight: 700;">Reservas no Turno
                             da Noite</div>
@@ -433,25 +438,25 @@
             </div>
         </div>
         <div class="container agendamentos-wrapper d-flex flex-column gap-2">
-            <div class="alert alert-danger" id="agentamentos-vazios">
-                <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
-            </div>
             <div class="row">
-                <div class="col-6 d-flex">
-                    <input type="text" id="nomeFilter" class="form-control w-50" aria-label="Nome do Solicitante"
+                <div class="col-12 col-md-4 d-md-flex">
+                    <input type="text" id="nomeFilter" class="form-control w-100 mb-1" aria-label="Nome do Solicitante"
                         placeholder="Nome do Solicitante">
                 </div>
-                <div class="col-6 d-flex gap-1">
-                    <input type="date" id="dataFilter" class="form-control" aria-label="Data da Reserva"
+                <div class="col-12 col-md-8 d-md-flex gap-1">
+                    <input type="date" id="dataFilter" class="form-control mb-1" aria-label="Data da Reserva"
                         placeholder="Data da Reserva">
                     </select>
-                    <select id="blocoFilter" class="form-select">
+                    <select id="blocoFilter" class="form-select mb-1">
                         <option value="">Todos</option>
                     </select>
-                    <select id="salaFilter" class="form-select">
-
+                    <select id="salaFilter" class="form-select mb-1">
+                        <option value="">Todos</option>
                     </select>
                 </div>
+            </div>
+            <div class="alert alert-danger" id="agentamentos-vazios">
+                <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
             </div>
             <div class="container container-titles">
                 <div class="row ">
