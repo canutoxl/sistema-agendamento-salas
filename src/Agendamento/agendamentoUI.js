@@ -1,12 +1,21 @@
 import * as dados from "./dados.js";
 import * as agendamentoService from './agendamentoService.js';
+import * as agendamentoModule from './agendamentoModule.js';
 
 const avisoVazio = document.querySelector("#agentamentos-vazios");
 
 const tabelaAgendamentos = () => {
     const containerAgendamentosEl = document.querySelector(".container-agendamentos");
+
+    const nomeFilter = document.querySelector('#nomeFilter').value || "";
+    const dataFilter = document.querySelector('#dataFilter').value || "";
+    const blocoFilter = document.querySelector('#blocoFilter').value || "";
+    const salaFilter = document.querySelector('#salaFilter').value || "";
+    
+    const agendamentosFiltrados = agendamentoService.filtrarAgendamentos(nomeFilter, dataFilter, blocoFilter, salaFilter);
+
     containerAgendamentosEl.innerHTML = "";
-    agendamentoService.agendamentos.map((item) => {
+    agendamentosFiltrados.map((item) => {
         const rowEl = document.createElement("div");
         rowEl.classList.add("row");
         const idEl = document.createElement("div");
@@ -52,6 +61,7 @@ const tabelaAgendamentos = () => {
 
         deleteEl.addEventListener('click', () => {
             agendamentoService.deleteAgentamento(item);
+            agendamentoModule.renderMetricas();
             tabelaAgendamentos();
         });
 
@@ -95,4 +105,34 @@ const dadosSelectAgendamento = () => {
     });
 }
 
-export { tabelaAgendamentos, dadosSelectAgendamento };
+const filterSelectAgendamento = () => {
+    const selectBlocoForm = document.querySelector("#blocoFilter");
+    const selectSalaForm = document.querySelector("#salaFilter");
+
+    dados.infraestrutura.map((item) => {
+        const option = document.createElement("option");
+        option.value = item.bloco;
+        option.textContent = item.bloco;
+        selectBlocoForm.appendChild(option);
+    });
+
+    // dados.infraestrutura[0].salas.map((sala) => {
+    //     const option = document.createElement("option");
+    //     option.value = sala;
+    //     option.textContent = sala;
+    //     selectSalaForm.appendChild(option);
+    // });
+
+    selectBlocoForm.addEventListener('change', (e) => {
+        const value = e.target.value;
+        selectSalaForm.innerHTML = "";
+        dados.infraestrutura.find((item) => item.bloco === value).salas.map((sala) => {
+            const option = document.createElement("option");
+            option.value = sala;
+            option.textContent = sala;
+            selectSalaForm.appendChild(option);
+        });
+    });
+}
+
+export { tabelaAgendamentos, dadosSelectAgendamento, filterSelectAgendamento };

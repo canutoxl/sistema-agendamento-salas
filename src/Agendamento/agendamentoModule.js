@@ -3,6 +3,16 @@ import * as agendamentoService from './agendamentoService.js';
 
 const renderAgendamentos = () => agendamentoUI.tabelaAgendamentos();
 const renderSelects = () => agendamentoUI.dadosSelectAgendamento();
+const renderFiltersSelects = () => agendamentoUI.filterSelectAgendamento();
+
+const renderMetricas = () => {
+    const metricaTotalReservas = document.querySelector('#metricaTotalReservas');
+    const metricaManhaReservas = document.querySelector('#metricaManhaReservas');
+    const metricaTardeReservas = document.querySelector('#metricaTardeReservas');
+    const metricaNoiteReservas = document.querySelector('#metricaNoiteReservas');
+
+    agendamentoService.calcularMetricas(metricaTotalReservas, metricaManhaReservas, metricaTardeReservas, metricaNoiteReservas);
+}
 
 const adicionarNovoAgendamento = () => {
     const nome = document.querySelector('#nomeForm');
@@ -18,6 +28,9 @@ const adicionarNovoAgendamento = () => {
 
     agendamentoService.novoAgendamento(nome, bloco, sala, data, turno, avisoDadosVazios, avisoDadosExistentes, modalElement);
     renderAgendamentos();
+    renderMetricas();
 }
 
-export { renderAgendamentos, renderSelects, adicionarNovoAgendamento }
+
+
+export { renderAgendamentos, renderSelects, adicionarNovoAgendamento, renderMetricas, renderFiltersSelects }

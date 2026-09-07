@@ -76,6 +76,12 @@
             background-color: var(--horas);
         }
 
+        .container-agendamentos {
+            overflow: auto;
+            height: 100%;
+            max-height: 450px;
+        }
+
         .container-titles .row,
         .container-agendamentos .row {
             padding: 2px;
@@ -101,11 +107,15 @@
             stroke: #101010;
         }
 
-        #agentamentos-vazios, #form-dados-vazios-aviso, #form-dados-existentes-aviso {
+        #agentamentos-vazios,
+        #form-dados-vazios-aviso,
+        #form-dados-existentes-aviso {
             display: none;
         }
 
-        #agentamentos-vazios.visible, #form-dados-vazios-aviso.visible, #form-dados-existentes-aviso.visible {
+        #agentamentos-vazios.visible,
+        #form-dados-vazios-aviso.visible,
+        #form-dados-existentes-aviso.visible {
             display: block;
         }
 
@@ -264,11 +274,7 @@
 <body>
     <div class="app">
         <nav class="navbar navbar-expand-lg pb-3 pt-3 mb-5">
-            <div class="container">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+            <div class="container d-flex justify-content-end">
                 <button type="button" class="btn btn-default d-flex align-items-center" style="gap: 5px"
                     data-bs-toggle="modal" data-bs-target="#modalNovoAgendamento">
                     Novo Agendamento
@@ -282,9 +288,9 @@
                 </button>
             </div>
         </nav>
-        <div class="container">
+        <div class="container mb-3">
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     <div class="card  mb-3 card-horas">
                         <div class="card-header">
                             total de horas
@@ -311,11 +317,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="card  mb-3 card-reserva">
                         <div class="card-header" style="text-transform: uppercase; font-weight: 700;">total de reservas
-                            ativas</div>
+                        </div>
                         <div class="card-body bg-light">
                             <div class="row">
                                 <div class="col-5 d-flex justify-content-start">
@@ -336,7 +342,7 @@
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex justify-content-start align-items-center card-valor-reserva"
-                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                                    style="font-size: 42px; font-weight: 700;" id="metricaTotalReservas">9999</div>
                             </div>
                         </div>
                     </div>
@@ -364,7 +370,7 @@
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex justify-content-start align-items-center card-valor-manha"
-                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                                    style="font-size: 42px; font-weight: 700;" id="metricaManhaReservas">9999</div>
                             </div>
                         </div>
                     </div>
@@ -395,7 +401,7 @@
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex justify-content-start align-items-center card-valor-tarde"
-                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                                    style="font-size: 42px; font-weight: 700;" id="metricaTardeReservas">9999</div>
                             </div>
                         </div>
                     </div>
@@ -419,7 +425,7 @@
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex justify-content-start align-items-center card-valor-noite"
-                                    style="font-size: 42px; font-weight: 700;">9999</div>
+                                    style="font-size: 42px; font-weight: 700;" id="metricaNoiteReservas">9999</div>
                             </div>
                         </div>
                     </div>
@@ -429,6 +435,23 @@
         <div class="container agendamentos-wrapper d-flex flex-column gap-2">
             <div class="alert alert-danger" id="agentamentos-vazios">
                 <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
+            </div>
+            <div class="row">
+                <div class="col-6 d-flex">
+                    <input type="text" id="nomeFilter" class="form-control w-50" aria-label="Nome do Solicitante"
+                        placeholder="Nome do Solicitante">
+                </div>
+                <div class="col-6 d-flex gap-1">
+                    <input type="date" id="dataFilter" class="form-control" aria-label="Data da Reserva"
+                        placeholder="Data da Reserva">
+                    </select>
+                    <select id="blocoFilter" class="form-select">
+                        <option value="">Todos</option>
+                    </select>
+                    <select id="salaFilter" class="form-select">
+
+                    </select>
+                </div>
             </div>
             <div class="container container-titles">
                 <div class="row ">
