@@ -77,9 +77,9 @@
         }
 
         .container-agendamentos {
-            overflow: auto;
+            /* overflow: auto; */
             height: 100%;
-            max-height: 450px;
+            /* max-height: 450px; */
         }
 
         .container-titles .row,
@@ -273,6 +273,63 @@
         .container {
             animation: animacaoContainer ease-in-out 2s;
         }
+
+        @media(max-width: 991px) {
+            .container-titles {
+                display: none;
+            }
+        }
+
+        .card.mobile {}
+
+        .card.mobile.manha {
+            background-color: var(--manha);
+        }
+
+        .card.mobile.tarde {
+            background-color: var(--tarde);
+        }
+
+        .card.mobile.noite {
+            background-color: var(--noite);
+        }
+
+        .card.mobile .card-mobile-body {
+            position: relative;
+        }
+
+        .card.mobile .card-mobile-body .id {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            padding: 5px;
+            font-weight: bold;
+            background: var(--bg);
+            border-radius: 93px;
+            margin: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card.mobile .card-mobile-body .excluir {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .card.mobile .card-mobile-body .excluir svg {
+            padding: 4px;
+            background: var(--bg);
+            border-radius: 16px;
+        }
+
+        .alert.alert-danger {
+            background: #D98F8F;
+            color: var(--text);
+        }
     </style>
 </head>
 
@@ -456,7 +513,7 @@
                 </div>
             </div>
             <div class="alert alert-danger" id="agentamentos-vazios">
-                <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas..
+                <strong>Aviso: </strong>Ainda não foram realizadas reservas de salas.
             </div>
             <div class="container container-titles">
                 <div class="row ">
